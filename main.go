@@ -32,7 +32,6 @@ func main() {
         v1.POST("/login", api.Login())
         v1.GET("/swagger/*", echoSwagger.WrapHandler)
     }
-
     r := e.Group("/api/v1/restricted")
     {
         r.Use(middleware.JWT([]byte("secret")))
