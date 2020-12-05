@@ -1,0 +1,34 @@
+basePath: /
+host: localhost:1313
+info:
+  contact: {}
+  description: This is a sample swagger server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /:
+    get:
+      consumes:
+      - text/plain
+      description: get "Hello, World!" of string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: ""
+      summary: get string
+  /user:
+    get:
+      consumes:
+      - application/json
+      description: get users in a group
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: get users
+swagger: "2.0"

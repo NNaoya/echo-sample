@@ -1,12 +1,12 @@
-package route
+package main
 
 import (
     "net/http"
     "github.com/labstack/echo/v4"
     "github.com/labstack/echo/v4/middleware"
     "github.com/myapp/api"
-    _ "github.com/myapp/cmd/myapp/docs"
-      echoSwagger "github.com/swaggo/echo-swagger"
+    _ "github.com/myapp/docs"
+    echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 type User struct {
@@ -21,27 +21,13 @@ type User struct {
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 // @host localhost:1313
 // @BasePath /
-func Init() *echo.Echo {
+func main() {
     e := echo.New()
-
-    // Set Bundle Middleware
 
     // Routes
     v1 := e.Group("/api/v1")
     {
         v1.GET("/", hello)
-        v1.GET("/ping", func(c echo.Context) error {
-          return c.String(http.StatusOK, "Hello, World!")
-        })
-        v1.GET("/test", func(c echo.Context) error {
-           return c.String(http.StatusOK, "Let's study!!")
-        })
-        v1.GET("/test1", func(c echo.Context) error {
-          return c.String(http.StatusOK, "Let's study!!!!")
-        })
-        v1.GET("/test2", func(c echo.Context) error {
-          return c.String(http.StatusOK, "Let's study!!!!")
-        })
         v1.GET("/user", show)
         v1.POST("/login", api.Login())
         v1.GET("/swagger/*", echoSwagger.WrapHandler)
@@ -53,7 +39,7 @@ func Init() *echo.Echo {
         r.GET("/welcome", api.Restricted())
     }
 
-    return e
+    e.Logger.Fatal(e.Start(":1323"))
 }
 
 // @Summary get string
