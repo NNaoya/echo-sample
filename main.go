@@ -37,7 +37,6 @@ func main() {
         r.Use(middleware.JWT([]byte("secret")))
         r.GET("/welcome", api.Restricted())
     }
-
     e.Logger.Fatal(e.Start(":1323"))
 }
 
