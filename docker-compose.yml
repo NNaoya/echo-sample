@@ -7,3 +7,21 @@ services:
       - .:/app
     ports:
       - 1323:1323
+  db:
+    image: mysql:8.0
+    container_name: echo_mysql_new
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      NYSQL_USER: canwho
+      MYSQL_PASSWORD: canwho
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/init-database.sh:/init-database.sh
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+volumes:
+  db-data:
+    driver: local
