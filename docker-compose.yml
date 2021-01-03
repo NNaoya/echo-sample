@@ -3,6 +3,8 @@ services:
   api:
     build: .
     command: go run main.go
+    environment:
+      - environment=local
     volumes:
       - .:/app
     ports:

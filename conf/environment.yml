@@ -1,0 +1,11 @@
+development:
+  db:
+    user: canwho
+    password: canwho
+    name: canwho-db
+
+production:
+  db:
+    user: pro_user
+    password: pro_pass
+    name: pro_db
